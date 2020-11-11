@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_022104) do
     t.text "opinion"
     t.string "image_id"
     t.integer "user_id"
+    t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

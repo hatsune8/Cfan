@@ -1,9 +1,5 @@
 class FavoritesController < ApplicationController
   
-  # def index
-  #   @favorites = Favorite.item.all
-  # end
-
 
   def create
     item = Item.find(params[:item_id])

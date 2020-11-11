@@ -1,0 +1,7 @@
+<%= form_with model:@item, local:true do |f| %>
+<%= f.attachment_field :image %>
+<%= f.text_field :title %>
+<%= f.text_area :opinion %>
+<%= f.select :genre, [["イラスト", "イラスト"], ["小説", "小説"], ["写真", "写真"], ["手芸", "手芸"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+<%= f.submit '変更を保存' %>
+<% end %>

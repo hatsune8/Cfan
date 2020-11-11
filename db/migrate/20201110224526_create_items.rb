@@ -5,8 +5,9 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :opinion
       t.string :image_id
       t.integer :user_id
-      
-      
+      t.string :genre
+
+
 
       t.timestamps
     end

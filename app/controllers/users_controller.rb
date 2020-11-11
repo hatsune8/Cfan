@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def favo
+    @favorites = Favorite.where(user_id: current_user.id)
+  end
+
   def update
     @user = User.find(params[:id])
     @user.update(user_params)

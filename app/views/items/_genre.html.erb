@@ -1,7 +1,11 @@
 
-ジャンル
-<li>イラスト</li>
-<li>小説</li>
-<li>写真</li>
-<li>手芸</li>
-<li>その他</li>
+<div class="genre-list">
+    <h3>ジャンル</h3><br>
+    <%= link_to "一覧", items_path %><br>
+    <%= link_to "イラスト", items_path(search: "イラスト") %><br>
+    <%= link_to "小説", items_path(search: "小説") %><br>
+    <%= link_to "写真", items_path(search: "写真") %><br>
+    <%= link_to "手芸", items_path(search: "手芸") %><br>
+    <%= link_to "その他", items_path(search: "その他") %>
+    
+</div>

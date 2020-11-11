@@ -1,22 +1,7 @@
-<header></header>
-
-<div class="header-list">
-  <% if user_signed_in? %>
-    <ul id="nav">
-      <li class="list"><%= link_to "my page", user_path(current_user.id), class: "btn" %></li>
-      <li class="list"><%= link_to "user", users_path, class: "btn" %></li>
-      <li class="list"><%= link_to "favo♡", items_path, class: "btn" %></li>
-      <li class="list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %></li>
-    </ul>
-  <% else %>
-    <ul id="nav">
-      <li class="list"><%= link_to "top", root_path, class: "btn" %></li>
-      <li class="list"><%= link_to "about", about_path, class: "btn" %></li>
-      <li class="list"><%= link_to "新規登録", new_user_registration_path, class: "btn" %></li>
-      <li class="list"><%= link_to "ログイン", new_user_session_path, class: "btn" %></li>
-    </ul>
-  <% end %>
-  
+<header>
+  <div class="logo">
+    <%= link_to "C-fan!", items_path, class: "h1" %>
+  </div>
   <div class="search-form" >
     <%= form_with(url: search_path, method: :get, local: true) do |f| %>
       <%= f.text_field 'search[word]' %>
@@ -25,4 +10,25 @@
       <%= f.submit '検索' %>
     <% end %>
   </div>
+
+</header>
+
+<div class="header-list">
+  <% if user_signed_in? %>
+    <ul class="nav-list">
+      <li class="nav-list-item"><%= link_to "my page", user_path(current_user.id), class: "btn btn-default" %></li>
+      <li class="nav-list-item"><%= link_to "user", users_path, class: "btn btn-default" %></li>
+      <li class="nav-list-item"><%= link_to "favo♡", user_favo_path, class: "btn btn-default" %></li>
+      <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-default" %></li>
+    </ul>
+  <% else %>
+    <ul class="nav">
+      <li class="nav-list-item"><%= link_to "top", root_path, class: "btn btn-default" %></li>
+      <li class="nav-list-item"><%= link_to "about", about_path, class: "btn btn-default" %></li>
+      <li class="nav-list-item"><%= link_to "新規登録", new_user_registration_path, class: "btn btn-default" %></li>
+      <li class="nav-list-item"><%= link_to "ログイン", new_user_session_path, class: "btn btn-default" %></li>
+    </ul>
+  <% end %>
+
+
 </div>
