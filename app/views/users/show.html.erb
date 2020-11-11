@@ -1,0 +1,13 @@
+<%= attachment_image_tag @user, :image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left", fallback: "no_image.jpg" %>
+<%= @user.name %>
+<%= @user.introduction %>
+<% if @user.id == current_user.id %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
+
+
+<% @items.each do |item| %>
+<%= attachment_image_tag item, :image %>
+<%= item.title %>
+<%= item.opinion %>
+<% end %>

@@ -1,0 +1,28 @@
+<header></header>
+
+<div class="header-list">
+  <% if user_signed_in? %>
+    <ul id="nav">
+      <li class="list"><%= link_to "my page", user_path(current_user.id), class: "btn" %></li>
+      <li class="list"><%= link_to "user", users_path, class: "btn" %></li>
+      <li class="list"><%= link_to "favo♡", items_path, class: "btn" %></li>
+      <li class="list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %></li>
+    </ul>
+  <% else %>
+    <ul id="nav">
+      <li class="list"><%= link_to "top", root_path, class: "btn" %></li>
+      <li class="list"><%= link_to "about", about_path, class: "btn" %></li>
+      <li class="list"><%= link_to "新規登録", new_user_registration_path, class: "btn" %></li>
+      <li class="list"><%= link_to "ログイン", new_user_session_path, class: "btn" %></li>
+    </ul>
+  <% end %>
+  
+  <div class="search-form" >
+    <%= form_with(url: search_path, method: :get, local: true) do |f| %>
+      <%= f.text_field 'search[word]' %>
+      <%= f.select 'search[model]', [['User', 1], ['Item', 2]] %>
+      <%= f.select 'search[match]', [['完全一致', 1],  ['部分一致', 2]] %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+</div>

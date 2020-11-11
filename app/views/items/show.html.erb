@@ -1,0 +1,30 @@
+
+<%= attachment_image_tag @item, :image %>
+<%= @item.title %>
+<%= @item.opinion %>
+<%= link_to '削除', item_path(@item), method: :delete, class: 'btn btn-danger' %>
+<%= @item.comments.count %>件コメント
+
+<% if @item.favorited_by?(current_user) %>
+  <%= link_to item_favorites_path(@item), method: :delete do %>
+    <%= @item.favorites.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to item_favorites_path(@item), method: :post do %>
+    <%= @item.favorites.count %> いいね
+  <% end %>
+<% end %>
+
+<%= form_with(model:[@item, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
+
+<% @item.comments.each do |comment| %>
+<%= comment.comment %>
+<% if comment.user == current_user %>
+<div>
+  <%= link_to "削除", item_comment_path(comment.item, comment), method: :delete, class: "btn btn-danger pull-right" %>
+</div>
+<% end %>
+<% end %>

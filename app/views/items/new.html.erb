@@ -1,0 +1,6 @@
+<%= form_with model:@item, local:true do |f| %>
+  <%= f.attachment_field :image %>
+  <%= f.text_field :title %>
+  <%= f.text_area :opinion %>
+  <%= f.submit %>
+<% end %>

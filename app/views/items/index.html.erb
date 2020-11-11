@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-4">
+      <%= render "items/genre" %>
+    </div>
+
+    <div class="col-xs-8">
+      <% if user_signed_in? %>
+      <%= link_to '投稿', new_item_path %>
+      <% end %>
+      <% @items.each do |item| %>
+      <div class="item">
+        <%= link_to item_path(item.id) do %>
+          <div class="item-image"><%= attachment_image_tag item, :image, :fill, 200, 150, class: "" %></div>
+        <% end %>
+          <div class="item-title"><%= item.title %></div>
+          <div class="item-opinion"><%= item.opinion %></div>
+          <%= item.favorites.count %>件
+
+
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

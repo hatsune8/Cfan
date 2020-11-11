@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+<%= attachment_image_tag user, :image %>
+<%= user.name %>
+<%= user.introduction %>
+<%= link_to '詳細', user_path(user), class: 'btn btn-primary' %>
+<% end %>
