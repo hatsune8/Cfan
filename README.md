@@ -27,7 +27,7 @@
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- 仮想環境：Vagrant,VirtualBox
+- IDE ： Cloud9
 
 ## 使用素材
 フリー素材の画像を使用します。

@@ -1,15 +1,16 @@
 class ItemsController < ApplicationController
 
   def index
+    @ranks = Item.where(id: Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+    # 下の記述でreturnを使っているのでreturnより下に@ranksの記述をすると、searchの条件分岐によっては通らなくなってしまうのでeachがnilになってメソッドエラーの原因になるので注意
+    # ランキング機能参考記事https://qiita.com/mitsumitsu1128/items/18fa5e49a27e727f00b4
     @items = Item.all
     @title = "投稿"
-
     return @items = @items.order(created_at: :desc) if params[:search].nil?
-
     @items = Item.where('genre LIKE ?', params[:search]).order(created_at: :desc)
     @title = params[:search]
     # order(created_at: :desc)をつけることで投稿日時が新しいものが上に表示されるようになっているhttp://ihatov08.hatenablog.com/entry/2016/02/26/111447
-    
+
   end
 
   def new

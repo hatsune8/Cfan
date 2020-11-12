@@ -1,11 +1,11 @@
 
 <div class="genre-list">
-    <h3>ジャンル</h3><br>
-    <%= link_to "一覧", items_path %><br>
-    <%= link_to "イラスト", items_path(search: "イラスト") %><br>
-    <%= link_to "小説", items_path(search: "小説") %><br>
-    <%= link_to "写真", items_path(search: "写真") %><br>
-    <%= link_to "手芸", items_path(search: "手芸") %><br>
-    <%= link_to "その他", items_path(search: "その他") %>
+    <h3 class="genre-title">ジャンル</h3><br>
+    <div class="genre"><%= link_to "一覧", items_path %><br></div>
+    <div class="genre"><%= link_to "イラスト", items_path(search: "イラスト") %><br></div>
+    <div class="genre"><%= link_to "小説", items_path(search: "小説") %><br></div>
+    <div class="genre"><%= link_to "写真", items_path(search: "写真") %><br></div>
+    <div class="genre"><%= link_to "手芸", items_path(search: "手芸") %><br></div>
+    <div class="genre"><%= link_to "その他", items_path(search: "その他") %></div>
     
 </div>

@@ -58,6 +58,40 @@ main {
  margin: 0 20px;
 }
 
+.rank {
+ text-align: center;
+ border: 1px solid #76a1b8;
+ border-radius: 30px;
+ width: 80%;
+ height: 620px;
+ margin: 50px auto;
+}
+.rank-item {
+ text-align: center;
+ width: 70%;
+ height: 200px;
+ margin: 0 auto;
+ padding-top: 15px;
+ border-bottom: 3px solid #76a1b8;
+}
+.rank-number {
+ width: 50%;
+ margin: 0 auto;
+ margin-bottom: 5px;
+}
+.rank-title {
+ border-bottom: 1px solid #76a1b8;
+ width: 80%;
+ margin: 0 auto;
+ font-size: 20px;
+ font-weight: bold;
+}
+.rank-genre {
+ border-bottom: 1px solid #76a1b8;
+ width: 50%;
+ margin: 0 auto;
+}
+
 .item-box {
  margin: 10px 0;
  width: 600px;
@@ -83,6 +117,23 @@ main {
 
 .genre-list {
  text-align: center;
+ width: 80%;
+ height: 330px;
+ border: 1px solid #76a1b8;
+ border-radius: 30px;
+ margin: 0 auto;
+ margin-top: 55px;
+}
+
+.genre-title {
+ border-bottom: 1px solid #76a1b8;
+ margin-bottom: 20px;
+ line-height: 50px;
+ margin: 0 auto;
+}
+
+.genre {
+ margin-bottom: 20px;
 }
 
 footer {

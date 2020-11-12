@@ -1,4 +1,5 @@
-<%= @favorites.each do |favorite| %>
+<% @favorites.each do |favorite| %>
+<%= attachment_image_tag favorite.item, :image %>
 <%= favorite.item.title %>
 <%= favorite.item.opinion %>
 <% end %>
