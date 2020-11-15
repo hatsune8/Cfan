@@ -4,7 +4,7 @@
     <div class="col-xs-4">
       <div class="profile">
         <div class="">
-          <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg" %>
+          <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image" %>
         </div><br>
         <div class="profile-text">
           <h4><%= @user.name %></h4>
