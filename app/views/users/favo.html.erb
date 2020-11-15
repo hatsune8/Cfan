@@ -1,5 +1,41 @@
-<% @favorites.each do |favorite| %>
-<%= attachment_image_tag favorite.item, :image %>
-<%= favorite.item.title %>
-<%= favorite.item.opinion %>
-<% end %>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-4">
+      <div class="profile">
+        <div class="">
+          <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg" %>
+        </div><br>
+        <div class="profile-text">
+          <h4><%= @user.name %></h4>
+          <%= @user.introduction %><br>
+          いいねした投稿数<%= @user.favorites.count %>件
+          <% if @user.id == current_user.id %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn" %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-8">
+      <% @favorites.each do |favorite| %>
+      <div class="item-box">
+        <div class="item-image">
+          <%= link_to item_path(favorite.item) do %>
+          <%= attachment_image_tag favorite.item, :image, :fill, 220, 160, class: "image_i" %>
+          <% end %>
+        </div>
+        <div class="item-text">
+          <div class="item-title h3"><%= favorite.item.title.truncate(15) %></div>
+          <div class="item-opinion h4"><%= favorite.item.opinion.truncate(38) %></div>
+          <div class="item-genre h4"><%= favorite.item.genre %></div>
+          <div class="item-favo h4"><%= favorite.item.favorites.count %>いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></div>
+          <div class="item-comment h4"><%= favorite.item.comments.count %>件<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

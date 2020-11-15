@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :desc)
   end
 
   def show
     @user = User.find(params[:id])
-    @items = @user.items.page(params[:page]).reverse_order
+    @items = @user.items.page(params[:page]).reverse_order.order(created_at: :desc)
   end
 
   def edit
@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def favo
-    @favorites = Favorite.where(user_id: current_user.id)
+    @user = current_user
+    @favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   def update

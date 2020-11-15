@@ -7,7 +7,7 @@
         <% @ranks.each.with_index(1) do |item, i| %>
           <div class="rank-item">
            <div class="rank-number">第<%= i %>位<br></div>
-           <%= attachment_image_tag item, :image, :fill, 150, 100, class: "image" %><br>
+           <%= attachment_image_tag item, :image, :fill, 150, 100, class: "image_i" %><br>
            <div class="rank-title"><%= item.title.truncate(10) %><br></div>
            <div class="rank-genre"><%= item.genre %></div>
           </div>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-xs-8">
-      <h3><%= @title %>一覧</h3>
+      <h3 class="index-title"><%= @title %>一覧</h3>
       <% if user_signed_in? %>
         <%= link_to new_item_path do %>
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
@@ -26,7 +26,7 @@
       <div class="item-box">
         <div class="item-image">
           <%= link_to item_path(item.id) do %>
-            <%= attachment_image_tag item, :image, :fill, 220, 160, class: "image" %>
+            <%= attachment_image_tag item, :image, :fill, 220, 160, class: "image_i" %>
           <% end %>
         </div>
         <div class="item-text">
