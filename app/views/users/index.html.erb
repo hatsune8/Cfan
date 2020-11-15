@@ -1,6 +1,39 @@
-<% @users.each do |user| %>
-<%= attachment_image_tag user, :image %>
-<%= user.name %>
-<%= user.introduction %>
-<%= link_to '詳細', user_path(user), class: 'btn btn-primary' %>
-<% end %>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-4">
+      <div class="profile">
+        <div class="">
+          <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg" %>
+        </div><br>
+        <div class="profile-text">
+          <h4><%= @user.name %></h4>
+          <%= @user.introduction %><br>
+          投稿数<%= @user.items.count %>件
+          <% if @user.id == current_user.id %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn" %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-8">
+      <% @users.each do |user| %>
+      <div class="item-box">
+        <div class="item-image">
+          <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :image, :fill, 160, 160, class: "img-circle", fallback: "no_image.jpg" %>
+          <% end %>
+        </div>
+        <div class="item-text">
+          <div class="item-title h3"><%= user.name.truncate(15) %></div>
+          <div class="item-opinion h4"><%= user.introduction.truncate(110) %></div>
+          <div class="item-favo h4">投稿数<%= user.items.count %>件</div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

@@ -1,31 +1,53 @@
+<div class="row">
+  <div class="container">
 
-<%= attachment_image_tag @item, :image %>
-<%= @item.title %>
-<%= @item.opinion %>
-<%= link_to '削除', item_path(@item), method: :delete, class: 'btn btn-danger' %>
-<%= link_to '編集', edit_item_path(@item), class: 'btn btn-primary' %>
-<%= @item.comments.count %>件コメント
+    <div class="col-xs-2"></div>
 
-<% if @item.favorited_by?(current_user) %>
-  <%= link_to item_favorites_path(@item), method: :delete do %>
-    <%= @item.favorites.count %> いいね
-  <% end %>
-<% else %>
-  <%= link_to item_favorites_path(@item), method: :post do %>
-    <%= @item.favorites.count %> いいね
-  <% end %>
-<% end %>
+    <div class="col-xs-8">
+      <div class="item-show-image">
 
-<%= form_with(model:[@item, @comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-  <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-<% end %>
+      <%= attachment_image_tag @item, :image, :fill, 600, 600, format: 'jpeg', class: "", fallback: "no_image.jpg" %>
 
-<% @item.comments.each do |comment| %>
-<%= comment.comment %>
-<% if comment.user == current_user %>
-<div>
-  <%= link_to "削除", item_comment_path(comment.item, comment), method: :delete, class: "btn btn-danger pull-right" %>
+      </div>
+      <h3><%= @item.title %></h3>
+      <h4><%= @item.opinion %></h4>
+      <%= link_to '編集', edit_item_path(@item), class: 'btn btn-primary' %>
+      <%= link_to '削除', item_path(@item), method: :delete, class: 'btn btn-danger' %>
+
+      <h4>
+        <% if @item.favorited_by?(current_user) %>
+          <%= link_to item_favorites_path(@item), method: :delete do %>
+            <%= @item.favorites.count %> いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <% end %>
+        <% else %>
+          <%= link_to item_favorites_path(@item), method: :post do %>
+            <%= @item.favorites.count %> いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <% end %>
+        <% end %>
+      </h4>
+      <h4><%= @item.comments.count %>件コメント<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></h4>
+
+      <% @item.comments.each do |comment| %>
+      <div class="comment-list">
+        <%= link_to user_path(comment.user) do %>
+          <%= attachment_image_tag comment.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg" %>
+        <% end %>
+        <%= comment.comment %>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", item_comment_path(comment.item, comment), method: :delete, class: "btn btn-danger pull-right" %>
+        <% end %>
+      </div>
+      <% end %>
+
+      <%= form_with(model:[@item, @comment], local: true) do |f| %>
+        <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+        <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+      <% end %>
+
+
+    </div>
+
+    <div class="col-xs-2"></div>
+
+  </div>
 </div>
-<% end %>
-<% end %>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :users
   get 'user/favo' => 'users#favo'
+  get 'user/withdrawal' => 'users#withdrawal'
 
   get 'search' => 'searchs#search'
 end

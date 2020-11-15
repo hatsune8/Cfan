@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @user = current_user
     @users = User.all.order(created_at: :desc)
   end
 
@@ -16,6 +17,9 @@ class UsersController < ApplicationController
   def favo
     @user = current_user
     @favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc)
+  end
+  
+  def withdrawal
   end
 
   def update
