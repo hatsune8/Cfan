@@ -8,7 +8,7 @@
     <div class="col-xs-6">
       <div class="form-group">
         <%= form_with model:@user, local:true do |f| %>
-          <div class="edit-purofile-image">
+          <div class="edit-profile-image">
             <%= attachment_image_tag @user, :image, :fill, 300, 300, format: 'jpeg', class: "img-circle profile-image" %>
           </div>
           <%= f.attachment_field :image %>
