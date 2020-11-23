@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_022104) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "image_id"
-    t.text "introduction"
+    t.text "introduction", default: "introductionが未入力です"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -8,4 +8,8 @@ class User < ApplicationRecord
   attachment :image
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  validates :name, presence: true, length: { in: 2..50 }
+  validates :introduction, presence: true, length: { in: 2..200 }
+  validates :email, presence: true, uniqueness: true
+
 end

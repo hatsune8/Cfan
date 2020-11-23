@@ -18,14 +18,22 @@ class UsersController < ApplicationController
     @user = current_user
     @favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc)
   end
-  
+
   def withdrawal
+    @user = current_user
   end
 
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(@user)
+  end
+
+  def destroy
+    user = current_user
+    if user.destroy
+      redirect_to root_path
+    end
   end
 
 private

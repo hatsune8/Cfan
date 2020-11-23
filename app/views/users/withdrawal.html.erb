@@ -1,3 +1,20 @@
-<div class="">
+<div class="withdrawal-text">
+
   <h3>本当に退会してもよろしいですか？</h3>
+  <h5>退会する場合、今まで投稿した作品は全て消えてしまいます</h5>
+
+  <div class="withdrawal-profile">
+    <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg", size:'200x200' %>
+    <h4><%= @user.name %></h4>
+    <h5>
+      <%= @user.introduction %><br>
+      投稿数<%= @user.items.count %>件
+    </h5>
+  </div>
+
+  <div class="withdrawal-page-btn">
+    <%= link_to "退会する", user_path(current_user), method: :delete, class: "btn btn-danger" %>
+    <%= link_to "退会しない", items_path, class: "btn btn-primary" %>
+  </div>
+
 </div>

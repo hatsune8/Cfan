@@ -31,11 +31,12 @@
         </div>
         <div class="item-text">
           <div class="item-title h3"><%= item.title.truncate(15) %></div>
-          <div class="item-opinion h4"><%= item.opinion.truncate(38) %></div>
+          <div class="item-opinion h4"><%= item.opinion.truncate(20) %></div>
           <!--truncate(40) 文字の表示を省略するメソッドhttps://qiita.com/ishidamakot/items/2e74d980b3a338e4c784-->
           <div class="item-genre h4"><%= item.genre %></div>
           <div class="item-favo h4"><%= item.favorites.count %>いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></div>
           <div class="item-comment h4"><%= item.comments.count %>件コメント<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
+          <%= item.created_at %>
         </div>
       </div>
       <% end %>

@@ -1,25 +1,58 @@
-<% if @model == 1.to_s %>
-  <% @users.each do |user| %>
-  <tr>
-    <td>
-    	<%= link_to user_path(user) do %>
-    	  <%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no-image.jpg") %>
-    	<% end %>
-    </td>
-		<td><%= user.name %></td>
-		<td><%= user.introduction %></td>
-  </tr>
-  <% end %>
-<% else %>
-  <% @items.each do |item| %>
-  <tr>
-		<td>
-			<%= link_to item_path(item) do %>
-				<%= attachment_image_tag(item, :image, :fill, 50, 50, fallback: "no-image.jpg") %>
-			<% end %>
-		</td>
-		<td><%= item.title %></td>
-		<td><%= item.opinion %></td>
-	</tr>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-4">
+      <%= render "items/genre" %>
+
+      <div class="rank">
+        <% @ranks.each.with_index(1) do |item, i| %>
+          <div class="rank-item">
+           <div class="rank-number">第<%= i %>位<br></div>
+           <%= attachment_image_tag item, :image, :fill, 150, 100, class: "image_i" %><br>
+           <div class="rank-title"><%= item.title.truncate(10) %><br></div>
+           <div class="rank-genre"><%= item.genre %></div>
+          </div>
+        <% end %>
+       </div>
+    </div>
+
+    <div class="col-xs-8">
+      <h3 class="search-index-title">検索結果一覧</h3>
+
+      <% if @model == 1.to_s %>
+        <% @users.each do |user| %>
+        <div class="item-box">
+          <div class="item-image">
+            <%= link_to user_path(user) do %>
+            <%= attachment_image_tag user, :image, :fill, 160, 160, class: "img-circle", fallback: "no_image.jpg", size:'160x160' %>
+            <% end %>
+          </div>
+          <div class="item-text">
+            <div class="item-title h3"><%= user.name.truncate(15) %></div>
+            <div class="item-opinion h4"><%= user.introduction.truncate(110) %></div>
+            <div class="item-favo h4">投稿数<%= user.items.count %>件</div>
+          </div>
+        </div>
+        <% end %>
+      <% else %>
+        <% @items.each do |item| %>
+          <div class="item-box">
+            <div class="item-image">
+              <%= link_to item_path(item.id) do %>
+                <%= attachment_image_tag item, :image, :fill, 220, 160, class: "image_i" %>
+              <% end %>
+            </div>
+      			<div class="item-text">
+              <div class="item-title h3"><%= item.title.truncate(15) %></div>
+              <div class="item-opinion h4"><%= item.opinion.truncate(20) %></div>
+              <div class="item-genre h4"><%= item.genre %></div>
+              <div class="item-favo h4"><%= item.favorites.count %>いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></div>
+              <div class="item-comment h4"><%= item.comments.count %>件コメント<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
+              <%= item.created_at %>
+            </div>
+      		</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

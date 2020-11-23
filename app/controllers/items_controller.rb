@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
-    @rank = Item.where(id: Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
-    @ranks = @rank.order(created_at: :desc)
+    @ranks = Item.where(id: Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+    # @ranks = @rank.order(created_at: :desc)
     @all_ranks = @ranks.where("create_at >= ?", Date.today)
     # "create_at >= ?", Date.today/(created_at: :desc)左の二つを付け足すランキングに1日ごとに切り替える使用を追加したい・日付を新しいdesc順にしたい
     # @rank,@ranks,@all_ranksの３つに分けることでランキング・日付リセット・新しい並び順に表示、全てを実現した（この方法は正しいの？=>FP実装完了の目処が立ったらメンターに確認）

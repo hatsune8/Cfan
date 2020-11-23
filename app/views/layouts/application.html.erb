@@ -10,13 +10,12 @@
   </head>
 
   <body>
-    <div class="back-color">
-    <%= render "homes/header" %>
-
-    <main>
-    <%= yield %>
-    </main>
-    <%= render "homes/footer" %>
+    <div class="body-box">
+      <%= render "homes/header" %>
+      <main>
+      <%= yield %>
+      </main>
+      <%= render "homes/footer" %>
     </div>
   </body>
 </html>

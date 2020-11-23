@@ -4,7 +4,7 @@
     <div class="col-xs-4">
       <div class="profile">
         <div class="">
-          <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image" %>
+          <%= attachment_image_tag @user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg", size:'200x200' %>
         </div><br>
         <div class="profile-text">
           <h4><%= @user.name %></h4>
@@ -27,10 +27,11 @@
         </div>
         <div class="item-text">
           <div class="item-title h3"><%= item.title.truncate(15) %></div>
-          <div class="item-opinion h4"><%= item.opinion.truncate(38) %></div>
+          <div class="item-opinion h4"><%= item.opinion.truncate(20) %></div>
           <div class="item-genre h4"><%= item.genre %></div>
           <div class="item-favo h4"><%= item.favorites.count %>いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></div>
           <div class="item-comment h4"><%= item.comments.count %>件コメント<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
+          <%= item.created_at %>
         </div>
       </div>
       <% end %>
