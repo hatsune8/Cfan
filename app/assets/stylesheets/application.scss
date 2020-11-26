@@ -162,8 +162,10 @@ main {
 }
 
 .top {
- height: 300px;
+ height: 600px;
  margin: 0 auto;
+ display: flex;
+ margin-top: 100px;
 }
 
 .top-text {
@@ -173,10 +175,20 @@ main {
  color: #1f1e63;
 }
 
+.top-link {
+ background-image: image-url("logo.png");
+ width: 300px;
+ height: 150px;
+ background-repeat: no-repeat;
+ background-size: cover;
+ margin: 0 auto;
+ position: absolute;
+ margin-top: 350px;
+ margin-left: 560px;
+}
+
 
 .about {
- height: 550px;
- width: 80%;
  margin: 0 auto;
 }
 .about-text {
@@ -184,6 +196,46 @@ main {
  line-height: 4;
  margin: 0 auto;
  color: #1f1e63;
+}
+
+.about-boxs {
+ width: 1000px;
+ height: 400px;
+ margin: 0 auto;
+ margin-top: 100px;
+ margin-bottom: 100px;
+ display: flex;
+ text-align: center;
+}
+
+.about-box {
+ width: 300px;
+ height: 400px;
+ margin-right: 50px;
+ background-color: #fff;
+ border: 5px solid #a2a2ad;
+ padding: 20px;
+ color: #1f1e63;
+}
+.about-box1 {
+ width: 300px;
+ height: 400px;
+ background-color: #fff;
+ border: 5px solid #a2a2ad;
+ padding: 20px;
+ color: #1f1e63;
+}
+.about-aicon {
+ font-size: 110px;
+ margin-top: 50px;
+ margin-bottom: 20px;
+}
+
+.about-user-text {
+ color: #1f1e63;
+ margin-top: 100px;
+ text-align: center;
+ font-weight: bold;
 }
 
 .log_in {
@@ -201,6 +253,13 @@ main {
 .search-index-title {
  color: #1f1e63;
 }
+
+.img_prev:hover {
+ cursor: pointer;
+ opacity: 0.7;
+ transform: scale(1.01, 1.01);
+}
+
 
 .profile {
  margin: 0 auto;
@@ -231,6 +290,7 @@ main {
  margin: 50px auto;
  width: 100%;
 }
+
 .item-show-image {
  text-align: center;
  margin: 50px auto;

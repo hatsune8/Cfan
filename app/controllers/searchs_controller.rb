@@ -10,16 +10,16 @@ class SearchsController < ApplicationController
     @match = params["search"]["match"]
     if @model == 1.to_s
       if @match == 1.to_s
-        @users = User.where('name LIKE ?', @word)
+        @users = User.where('name LIKE ?', @word).order(created_at: :desc)
       else
-        @users = User.where('name LIKE ?', '%'+@word+'%')
+        @users = User.where('name LIKE ?', '%'+@word+'%').order(created_at: :desc)
       end
     end
     if @model == 2.to_s
       if @match == 1.to_s
-        @items = Item.where('title LIKE ?', @word)
+        @items = Item.where('title LIKE ?', @word).order(created_at: :desc)
       else
-        @items = Item.where('title LIKE ?', '%'+@word+'%')
+        @items = Item.where('title LIKE ?', '%'+@word+'%').order(created_at: :desc)
       end
     end
   end

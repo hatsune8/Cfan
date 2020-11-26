@@ -8,9 +8,9 @@
       <div class="form-group">
       <%= form_with model:@item, local:true do |f| %>
       <div class="edit-purofile-image">
-        <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg', class: "" %>
+        <%= f.file_field :image, class: 'img_field', style: 'display:none;' %>
+        <%= attachment_image_tag @item, :image, fallback: 'no_image.png', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
       </div>
-      <%= f.attachment_field :image %>
       <%= f.text_field :title, class: "form-control input-lg", placeholder: "titleを入力して下さい" %>
       <%= f.text_area :opinion, class: "form-control input-lg", placeholder: "opinionを入力して下さい" %>
       <%= f.select :genre, [["イラスト", "イラスト"], ["小説", "小説"], ["写真", "写真"], ["手芸", "手芸"], ["その他", "その他"]], include_blank: "選択して下さい" %>

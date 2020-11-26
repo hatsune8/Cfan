@@ -4,31 +4,3 @@
   display: flex;
   justify-content: center;
 }
-
-.container-box-white {
-  margin: 0 auto;
-  height: 600px;
-  width: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  position: absolute;
-  z-index: 99999;
-}
-
-.container-box-text {
-  color: #1f1e63;
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 160px;
-  font-size: 30px;
-}
-
-.top-link {
- background-image: image-url("logo.png");
- width: 300px;
- height: 150px;
- background-repeat: no-repeat;
- background-size: cover;
- margin: 0 auto;
- margin-top: 300px;
-}
