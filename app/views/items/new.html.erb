@@ -7,7 +7,7 @@
     <div class="col-xs-6">
       <div class="form-group">
       <%= form_with model:@item, local:true do |f| %>
-      <div class="edit-purofile-image">
+      <div class="edit-image">
         <%= f.file_field :image, class: 'img_field', style: 'display:none;' %>
         <%= attachment_image_tag @item, :image, fallback: 'no_image.png', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
       </div>

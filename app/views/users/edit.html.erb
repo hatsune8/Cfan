@@ -10,7 +10,7 @@
         <%= form_with model:@user, local:true do |f| %>
           <div class="edit-profile-image">
             <%= f.file_field :image, class: 'img_field', style: 'display:none;' %>
-            <%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: 'no_image.png', size:'300x300', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev img-circle profile-image' %>
+            <%= attachment_image_tag @user, :image, :fill, 300, 300, fallback: 'no_image2.png', size:'300x300', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev img-circle profile-image' %>
           </div>
           <%= f.text_field :name, class: "form-control input-lg", placeholder: "nameを入力して下さい" %>
           <%= f.text_area :introduction, class: "form-control input-lg", placeholder: "introductionを入力して下さい" %>
