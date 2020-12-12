@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   private
   def set_default
-    self.introduction ||= "テスト"
+    self.introduction ||= "introductionが未入力です"
   end
 
 end

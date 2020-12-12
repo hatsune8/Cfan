@@ -27,13 +27,8 @@
           <% end %>
         </div>
         <div class="item-text">
-
           <div class="item-title h3"><%= user.name.truncate(15) %></div>
-          <% if !user.introduction.nil? %>
           <div class="item-opinion h4"><%= user.introduction.truncate(110) %></div>
-          <% else %>
-          <div class="item-opinion h4">introductionが未入力です</div>
-          <% end %>
           <div class="item-favo h4">投稿数<%= user.items.count %>件</div>
         </div>
       </div>
