@@ -35,7 +35,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :name
       t.string :image_id
-      t.text :introduction, default: "introductionが未入力です"
+      t.text :introduction
       t.timestamps null: false
     end
 

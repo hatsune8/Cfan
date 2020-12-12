@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_initialize :set_default, if: :new_record?
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,5 +11,12 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   validates :name, presence: true, length: { in: 2..50 }
   validates :email, presence: true, uniqueness: true
+
+
+
+  private
+  def set_default
+    self.introduction ||= "テスト"
+  end
 
 end
