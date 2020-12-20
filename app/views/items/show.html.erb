@@ -10,9 +10,9 @@
       <h3><%= @item.title %></h3>
       <h4><%= @item.opinion %></h4>
       <%= link_to user_path(@item.user) do %>
-        <%= attachment_image_tag @item.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg", size:'50x50' %>
+        <%= attachment_image_tag @item.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image2.jpg", size:'50x50' %>
       <% end %>
-      <%= @item.created_at %>
+      <%= @item.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
       <% if @item.user == current_user %>
         <%= link_to '編集', edit_item_path(@item), class: 'btn btn-primary' %>
         <%= link_to '削除', item_path(@item), method: :delete, class: 'btn btn-danger' %>
@@ -38,13 +38,13 @@
       <% @item.comments.each do |comment| %>
       <div class="comment-list">
         <%= link_to user_path(comment.user) do %>
-          <%= attachment_image_tag comment.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image.jpg", size:'50x50' %>
+          <%= attachment_image_tag comment.user, :image, :fill, 50, 50, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image2.jpg", size:'50x50' %>
         <% end %>
         <%= comment.comment %>
         <% if comment.user == current_user %>
           <%= link_to "削除", item_comment_path(comment.item, comment), method: :delete, class: "btn btn-danger pull-right" %>
         <% end %><br>
-        <%= comment.created_at %>
+        <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
       </div>
       <% end %>
 

@@ -32,20 +32,31 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user_id = current_user.id
-    @item.save
-    redirect_to items_path
+    if @item.save
+      flash[:success] = "投稿が完了しました。"
+      redirect_to items_path
+    else
+      flash.now[:warning] = "投稿に失敗しました。すべての項目を埋めてください。"
+      render "new"
+    end
   end
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to item_path(@item)
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      flash.now[:warning] = "アップデートに失敗しました。すべての項目を埋めてください。"
+      render "edit"
+    end
   end
 
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to items_path
+    if @item.destroy
+      flash[:success] = "投稿は削除されました。"
+      redirect_to items_path
+    end
   end
 
 

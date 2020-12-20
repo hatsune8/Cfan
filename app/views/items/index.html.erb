@@ -18,6 +18,11 @@
     </div>
 
     <div class="col-xs-8">
+      <% flash.each do |key, value| %>
+        <p class="alert alert-success">
+          <%= value %>
+        </p>
+      <% end %>
       <h3 class="index-title"><%= @title %>一覧</h3>
       <% if user_signed_in? %>
         <%= link_to new_item_path do %>
@@ -38,7 +43,7 @@
           <div class="item-genre h4"><%= item.genre %></div>
           <div class="item-favo h4"><%= item.favorites.count %>いいね<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></div>
           <div class="item-comment h4"><%= item.comments.count %>件コメント<span class="glyphicon glyphicon-comment" aria-hidden="true"></span></div>
-          <%= item.created_at %>
+          <%= item.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
         </div>
       </div>
       <% end %>
