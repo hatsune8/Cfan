@@ -1,0 +1,15 @@
+<div class="profile">
+  <div class="">
+    <%= attachment_image_tag user, :image, :fill, 200, 200, format: 'jpeg', class: "img-circle profile-image", fallback: "no_image2.jpg", size:'200x200' %>
+  </div><br>
+  <div class="profile-text">
+    <h4><%= user.name %></h4>
+    <%= user.introduction %><br>
+    投稿数<%= user.items.count %>件
+    <% if user_signed_in? %>
+      <% if user.id == current_user.id %>
+        <p><%= link_to "プロフィール編集", edit_user_path(user), class: "btn" %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
